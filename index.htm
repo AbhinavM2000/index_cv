@@ -4,6 +4,30 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
 </head>
+<button id="info-btn" style="position: fixed; top: 10px; right: 10px; background-color: black;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
+<script>
+  const infoBtn = document.getElementById('info-btn');
+
+  infoBtn.addEventListener('click', () => {
+    Swal.fire({
+      title: '<span style="color:black;"><h2>Hello there!</h2></span>',
+      html: '<span style="color:black;">So many things to do... So little time.<br><br> Take a look at my CV while I harvest some time to improve the site !<br><br> Oh, and the embedded links are not working, details on most of the projects you can find on <a href="https://github.com/AbhinavM2000" target="_blank">my GitHub</a> !<br><br> Other Known issues : Minor text rendering problems on mobile devices.</span>',
+      confirmButtonColor: 'black',
+      background: '#fff',
+      backdrop: `
+        rgba(0,0,0,0.8)
+        url("https://cdn.pixabay.com/photo/2016/12/31/22/15/firework-1946484_960_720.jpg")
+        center top
+        no-repeat
+      `
+    });
+  });
+</script>
+
 <style>
       @font-face {
         font-family: 'LaTeXFont';
@@ -88,12 +112,13 @@
       z-index: 10000;
     }
   </style>
+  
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         Swal.fire({
           title: '<span style="color:black;"><h2>Hello there!</h2></span>',
-          html: '<span style="color:black;">So many things to do... So little time.<br><br> Take a look at my CV while I harvest some time to improve the site !<br><br> Oh, and the embedded links are not working, details on most of the projects you can find on <a href="https://github.com/AbhinavM2000" target="_blank">my GitHub</a> !</span>',
+          html: '<span style="color:black;">So many things to do... So little time.<br><br> Take a look at my CV while I harvest some time to improve the site !<br><br> Oh, and the embedded links are not working, details on most of the projects you can find on <a href="https://github.com/AbhinavM2000" target="_blank">my GitHub</a><br><br> Other Known issues : Minor text rendering problems on mobile devices.</span>',
           confirmButtonColor: 'black',
           background: '#fff',
           backdrop: `
