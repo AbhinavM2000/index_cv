@@ -15,7 +15,79 @@
         font-size: 16px;
         color: black;
       }
+	    .toggle-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px;
+      background-color: black;
+      color: white;
+      border: none;
+      outline: none;
+      cursor: pointer;}
     </style>
+
+  <script>
+    var tapCount = 0;
+    var bodyEl = document.querySelector('body');
+
+    function resetTapCount() {
+      tapCount = 0;
+    }
+
+    function handleTap() {
+      tapCount++;
+      if (tapCount === 2) {
+        bodyEl.classList.toggle('dark-mode');
+        tapCount = 0;
+      } else {
+        setTimeout(resetTapCount, 300);
+      }
+    }
+
+    // Detect double tap on mobile devices
+    var touchStartTime = 0;
+    var touchEndTime = 0;
+    bodyEl.addEventListener('touchstart', function(event) {
+      touchStartTime = new Date().getTime();
+    });
+    bodyEl.addEventListener('touchend', function(event) {
+      touchEndTime = new Date().getTime();
+      if (touchEndTime - touchStartTime < 500) {
+        handleTap();
+      }
+    });
+
+    // Detect double click on desktop devices
+    bodyEl.addEventListener('dblclick', handleTap);
+  </script>
+</body>
+    <style>
+    html, body {
+      transition: filter 0.3s ease-in-out;
+    }
+
+    body {
+      background-color: white;
+      color: black;
+    }
+ .dark-mode html, .dark-mode body {
+      filter: invert(100%);
+    }
+
+    .toggle-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px;
+      background-color: black;
+      color: white;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      z-index: 10000;
+    }
+  </style>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -821,7 +893,20 @@ body {
 
 </div>
 
+  <button class="toggle-button" onclick="toggleNegativeMode()">Dark Mode</button>
 
+  <script>
+    function toggleNegativeMode() {
+      var htmlEl = document.querySelector('html');
+      htmlEl.classList.toggle('dark-mode');
+      var toggleButton = document.querySelector('.toggle-button');
+      if (htmlEl.classList.contains('dark-mode')) {
+        toggleButton.textContent = 'Bright Mode';
+      } else {
+        toggleButton.textContent = 'Dark Mode';
+      }
+    }
+  </script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
